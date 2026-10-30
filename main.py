@@ -52,6 +52,16 @@ def writing_down_the_words_I_said(r, audio):
         print("connection lost ")
 
 
+def speak(text):
+    engine = pyttsx3.init()
+    engine.setProperty('rate', 150)  # Adjust the rate as needed
+    voices=engine.getProperty('voices')
+    for voice in voices:
+        if 'Microsoft Zira Desktop - English (United States)' in voice.name:
+            engine.setProperty('voice', voice.id)
+            break
+    engine.say('Sally sells seashells by the seashore.')
+    engine.runAndWait()
 
 if __name__ == "__main__":
     main()
